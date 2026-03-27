@@ -5,6 +5,16 @@ SRCS = srcs
 all:
 
 prep:
+	mkdir -p secrets
+	@if [ ! -f secrets/db_password.txt ]; then \
+		read -s -p "Enter DB password: " pass; echo ""; \
+		echo $$pass > secrets/db_password.txt; \
+	fi
+	@if [ ! -f secrets/db_root_password.txt ]; then \
+		read -s -p "Enter DB root password: " pass; echo ""; \
+		echo $$pass > secrets/db_root_password.txt; \
+	fi
+
 	sudo mkdir -p /home/pruszkie/data/mariadb
 	sudo mkdir -p /home/pruszkie/data/wordpress
 	sudo chmod -R 777 /home/pruszkie/data/mariadb
