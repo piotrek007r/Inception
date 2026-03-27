@@ -1,9 +1,14 @@
+# change default dash to bash due some unsupported flags
+SHELL := /bin/bash
+
 SRCS = srcs
 
 .PHONY: prep up down build clean fclean re
 
 all:
 
+# creating secret files and filling them by prompting user
+# creating folders where vouluems will be related
 prep:
 	mkdir -p secrets
 	@if [ ! -f secrets/db_password.txt ]; then \
