@@ -19,6 +19,14 @@ prep:
 		read -s -p "Enter DB root password: " pass; echo ""; \
 		echo $$pass > secrets/db_root_password.txt; \
 	fi
+	@if [ ! -f secrets/wp_admin_password.txt ]; then \
+	read -s -p "Enter WP admin password: " pass; echo ""; \
+	echo $$pass > secrets/wp_admin_password.txt; \
+	fi
+	@if [ ! -f secrets/wp_user_password.txt ]; then \
+	read -s -p "Enter WP user password: " pass; echo ""; \
+	echo $$pass > secrets/wp_user_password.txt; \
+	fi
 
 	sudo mkdir -p /home/pruszkie/data/mariadb
 	sudo mkdir -p /home/pruszkie/data/wordpress
