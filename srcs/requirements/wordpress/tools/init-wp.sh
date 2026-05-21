@@ -9,6 +9,10 @@ until mysqladmin ping -h "mariadb" --silent; do
 done
 echo "MariaDB is ready!"
 
+# Injecting passwords from secrets
+WP_ADMIN_PASSWORD=$(cat /run/secrets/wp_admin_password)
+WP_USER_PASSWORD=$(cat /run/secrets/wp_user_password)
+
 # Configure WordPress if wp-config.php does not exist
 if [ ! -f "wp-config.php" ]; then
     wp core download --allow-root --debug
