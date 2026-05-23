@@ -24,6 +24,7 @@ To start the full infrastructure, run:
 
 ```bash
 make up
+```
 
 On first launch, the system will automatically prompt for required credentials, including database and WordPress user passwords.
 
