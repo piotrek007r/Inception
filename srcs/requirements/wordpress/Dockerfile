@@ -1,4 +1,4 @@
-FROM alpine:3.18
+FROM alpine:3.21
 
 RUN apk add --no-cache \
     php82 \
@@ -16,6 +16,10 @@ RUN apk add --no-cache \
 
 # symlink due to wp requirment of php not php82
 RUN ln -s /usr/bin/php82 /usr/bin/php
+
+# Install netcat (nc) used in init script to check MariaDB readiness
+# by testing if port 3306 is open before running WordPress setup
+RUN apk add --no-cache netcat-openbsd
 
 # Replace adress to listen to from defoult to 0.0.0.0
 RUN sed -i 's|127.0.0.1:9000|0.0.0.0:9000|g' /etc/php82/php-fpm.d/www.conf

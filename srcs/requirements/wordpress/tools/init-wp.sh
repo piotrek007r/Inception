@@ -2,9 +2,8 @@
 set -e
 
 # Wait for MariaDB to be ready
-echo "Waiting for MariaDB..."
-until mysqladmin ping -h "mariadb" --silent; do
-    echo -n "."
+until nc -z mariadb 3306; do
+    echo "Waiting for MariaDB..."
     sleep 1
 done
 echo "MariaDB is ready!"
