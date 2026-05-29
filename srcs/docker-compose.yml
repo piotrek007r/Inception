@@ -31,7 +31,7 @@ services:
         container_name: nginx
         image: nginx
         volumes:
-            - nginx_data:/var/www/html
+            - wordpress_data:/var/www/html
         ports:
             - "443:443"
         networks:
@@ -47,12 +47,6 @@ volumes:
             device: /home/pruszkie/data/mariadb
             o: bind
     wordpress_data:
-        driver: local
-        driver_opts:
-            type: none
-            device: /home/pruszkie/data/wordpress
-            o: bind
-    nginx_data:
         driver: local
         driver_opts:
             type: none
